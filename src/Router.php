@@ -3,6 +3,7 @@ namespace App\Todolist;
 
 use App\Todolist\Controller\HomeController;
 use App\Todolist\Controller\TaskController;
+use App\Todolist\Controller\ContactController;
 
 
 
@@ -43,6 +44,12 @@ class Router
             // Instancier le contrôleur et appeler la méthode
             $controller = new TaskController();
             $controller->update((int)$parts[4]);
+        }
+
+        if ($url === "/todolist_php/public/contact/") {
+            // Instancier le contrôleur et appeler la méthode
+            $controller = new ContactController();
+            $controller->contact();
         }
         // Gérer les erreurs (par exemple, afficher une page 404)
     }
