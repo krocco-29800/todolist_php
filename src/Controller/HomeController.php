@@ -16,7 +16,7 @@ class HomeController{
             "faire les courses", "finir le projet", "aller au sport"
         ];
         echo $twig->render('homepage.twig', [
-            'name' => "Assoumani",
+            'name' => "Krocco",
             'tasks' => $tasks
         ]);
     }
