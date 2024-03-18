@@ -89,4 +89,38 @@ class TaskRepository
             "DELETE FROM task WHERE id = " . $id
         );
     }
+
+    public function contact()
+    {
+        $pdo = new Database(
+            "127.0.0.1",
+            "todolist",
+            "3306",
+            "root",
+            ""
+        );
+        $pdo->query(
+            "INSERT INTO contact (nom, prenom, email) VALUES (?,?,?)",
+            [$_POST['nom'], $_POST['prenom'], $_POST['email']]
+        );
+    }
+
+    public function index2()
+    {
+        // se connecter à la base de donnée
+        $pdo = new Database(
+            "127.0.0.1",
+            "todolist",
+            "3306",
+            "root",
+            ""
+        );
+        // récupérer les datas
+        $contacts = $pdo->selectAll(
+            "SELECT * FROM contact"
+        );
+        return $contacts;
+    }
+
+    
 }

@@ -1,5 +1,7 @@
 <?php 
 namespace App\Todolist\Controller;
+use App\Todolist\Repository\TaskRepository;
+use App\Todolist\Service\Database;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -11,13 +13,15 @@ class HomeController{
         $loader = new FilesystemLoader("../templates");
         // inintialiser twig
         $twig = new Environment($loader);
+
+        $taskRepository = new TaskRepository();
+        $contacts = $taskRepository->index2();
+        // echo "<pre>" ; 
+        // var_dump($tasks);
+        // echo "</pre>";
         // rendre une vue
-        $tasks = [
-            "faire les courses", "finir le projet", "aller au sport"
-        ];
         echo $twig->render('homepage.twig', [
-            'name' => "Krocco",
-            'tasks' => $tasks
+            'contacts' => $contacts
         ]);
     }
 }

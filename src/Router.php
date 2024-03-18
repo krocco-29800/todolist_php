@@ -51,6 +51,19 @@ class Router
             $controller = new ContactController();
             $controller->contact();
         }
+
+        if (array_key_exists(5, $parts) && $parts[5] === "delete" && $parts[4] !== "new" && $parts[3] === "contact") {
+            // Instancier le contrôleur et appeler la méthode
+            $controller = new TaskController();
+            $controller->delete((int)$parts[4]);
+        }
+        if (array_key_exists(5, $parts) && $parts[5] === "update" && $parts[4] !== "new" && $parts[3] === "contact") {
+            // Instancier le contrôleur et appeler la méthode
+            $controller = new TaskController();
+            $controller->update((int)$parts[4]);
+        }
         // Gérer les erreurs (par exemple, afficher une page 404)
     }
+
+    
 }
